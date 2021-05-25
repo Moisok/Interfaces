@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -27,6 +29,8 @@ public class BurguerQuennApp extends JFrame{
 	private JLabel smos;
 	private JLabel sbb;
 	private JLabel syogur;
+	private JLabel mensaje;
+	private JLabel mensaje2;
 	private JRadioButton pollo;
 	private JRadioButton cerdo;
 	private JRadioButton ternera;
@@ -64,6 +68,9 @@ public class BurguerQuennApp extends JFrame{
 		setResizable(false);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		Toolkit predeterminado=Toolkit.getDefaultToolkit();
+		Image icono=predeterminado.getImage("Icono.gif");
+		setIconImage(icono);
 		
 		//Fuentes 
 		Font letra1 = new Font("Rufscript", Font.BOLD, 15);
@@ -71,37 +78,44 @@ public class BurguerQuennApp extends JFrame{
 		
 		//Modificacion de variables
 		//Letras del menu
-		menu = new JLabel("Menu basico 10€:");
+		menu = new JLabel("Menu basico");
+		menu.setForeground(Color.red);
 		menu.setFont(letra2);
 		menu.setBounds(10, 10, 300, 22);
 		
 		//Hamburguesa
 		hamburguesa = new JLabel("Hamburguesa");
+		hamburguesa.setForeground(Color.blue);
 		hamburguesa.setFont(letra1);
 		hamburguesa.setBounds(10, 40, 100, 22);
 		
 		//tipo de pan
 		pan = new JLabel("Pan");
+		pan.setForeground(Color.blue);
 		pan.setFont(letra1);
 		pan.setBounds(150, 40, 100, 22);
 		
 		//tipo de papas
 		papas = new JLabel("Patatas");
+		papas.setForeground(Color.blue);
 		papas.setFont(letra1);
 		papas.setBounds(250, 40, 100, 22);
 		
 		//Bebida
 		bebida = new JLabel("Bebida");
+		bebida.setForeground(Color.blue);
 		bebida.setFont(letra1);
 		bebida.setBounds(10, 200, 100, 22);
 		
 		//Extras
 		extras = new JLabel("Complementos/Adiconales");
+		extras.setForeground(Color.blue);
 		extras.setFont(letra1);
 		extras.setBounds(10, 260, 210, 22);
 		
 		//Salsas
 		salsas = new JLabel("Salsas (0,50 cada 1)");
+		salsas.setForeground(Color.blue);
 		salsas.setFont(letra1);
 		salsas.setBounds(200, 280, 210, 22);
 		
@@ -149,11 +163,11 @@ public class BurguerQuennApp extends JFrame{
         cola= new JRadioButton("Cola");
         cola.setBounds(5, 230, 80, 23);
         naranja= new JRadioButton("Naranja");
-        naranja.setBounds(90, 230, 80, 23);
+        naranja.setBounds(100, 230, 80, 23);
         limon= new JRadioButton("Limon");
-        limon.setBounds(185, 230, 80, 23);
+        limon.setBounds(195, 230, 80, 23);
         agua= new JRadioButton("Agua");
-        agua.setBounds(275, 230, 80, 23);
+        agua.setBounds(285, 230, 80, 23);
         opbebidas = new ButtonGroup();
         opbebidas.add(cola);
         opbebidas.add(naranja);
@@ -192,18 +206,37 @@ public class BurguerQuennApp extends JFrame{
         doblepapas.setBounds(10, 355, 150, 20);
         
         //Domicilio
-        domicilio= new JRadioButton("Domicilio");
+        domicilio= new JRadioButton("Domicilio 5€");
+        domicilio.setForeground(Color.blue);
         domicilio.setBounds(50, 400, 109, 23);
         recogida= new JRadioButton("En local");
+        recogida.setForeground(Color.blue);
         recogida.setBounds(200, 400, 109, 23);
         oppan = new ButtonGroup();
         oppan.add(domicilio);
         oppan.add(recogida);
         
         //BOTON PARA CALCULAR
-        JButton calcular= new JButton ("¡Calcula!");
-		calcular.setBounds(250, 10, 100, 30);
+        JButton calcular= new JButton ("Calcula");
+		calcular.setBounds(150, 450, 100, 30);
+		
+		//Nota
+		mensaje= new JLabel ("El precio base del menu son 10 euros");
+		mensaje.setFont(letra1);
+        mensaje.setBounds(80, 550, 500, 100);
         
+        mensaje2= new JLabel ("(Sin calcular el iva (10%))");
+		mensaje2.setFont(letra1);
+        mensaje2.setBounds(80, 570, 500, 100);
+		
+        
+		//Total
+		JTextField resultados = new JTextField();
+		resultados.setHorizontalAlignment(JTextField.CENTER);
+		resultados.setBackground(Color.red);
+		resultados.setEditable(false);
+		resultados.setBounds(150, 500, 100, 50);
+		
 		
 		//Creacion de panel
 		JPanel elementos = new JPanel();
@@ -249,21 +282,54 @@ public class BurguerQuennApp extends JFrame{
 		elementos.add(yogur);
 		elementos.add(domicilio);
 		elementos.add(recogida);
+		elementos.add(calcular);
+		elementos.add(resultados);
+		elementos.add(mensaje);
+		elementos.add(mensaje2);
+		
+		
+		//Evento de calcular
+		FuncionCalcula(calcular, resultados);
 		
 	//Fin de constructor	
 	}
+
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//Funcion para calcular
+	private void FuncionCalcula(JButton calcular, JTextField resultados) {
+		calcular.addActionListener(new ActionListener(){
+            public void actionPerformed (ActionEvent e){
+            	double precio = 10;
+            	int vketchup = (int)ketchup.getValue();
+            	double vvketchup = vketchup*0.5;
+            	int vmostaza = (int)mostaza.getValue();
+            	double vvmostaza = vmostaza*0.5;
+            	int vyogur = (int)yogur.getValue();
+            	double vvyogur = vyogur*0.5;
+            	int vbbq = (int)bbq.getValue();
+            	double vvbbq = vbbq*0.5;
+            	  if (ternera.isSelected() | vegana.isSelected()  ) {
+                  	precio = precio +1;
+                  }
+            	  if (doble.isSelected() ) {
+                  	precio = precio + 2;
+                  }
+            	  if (doblequeso.isSelected() ) {
+                    	precio = precio + 0.50;
+                    }
+            	  if (doblepapas.isSelected() ) {
+                  	precio = precio + 1;
+                  }
+            	  if (domicilio.isSelected() ) {
+                    	precio = precio + 5;
+                    }
+            	double total = precio + vvketchup + vvmostaza + vvyogur + vvbbq;
+            	double iva = total * 0.10;
+            	double totalconiva = total + iva;
+            	resultados.setText(totalconiva + " " + "€");                   
+            }
+        });
+	}
 	
 	
 	//Clase Principal
