@@ -59,6 +59,9 @@ public class BurguerQuennApp extends JFrame{
 	private JSpinner yogur;
 	private JRadioButton domicilio;
 	private JRadioButton recogida;
+	private JTextField resultados;
+	private JButton calcular;
+	private JButton reiniciar;
 	
 	public BurguerQuennApp() {
 	
@@ -208,7 +211,7 @@ public class BurguerQuennApp extends JFrame{
         //Domicilio
         domicilio= new JRadioButton("Domicilio 5€");
         domicilio.setForeground(Color.blue);
-        domicilio.setBounds(50, 400, 109, 23);
+        domicilio.setBounds(80, 400, 109, 23);
         recogida= new JRadioButton("En local");
         recogida.setForeground(Color.blue);
         recogida.setBounds(200, 400, 109, 23);
@@ -217,8 +220,12 @@ public class BurguerQuennApp extends JFrame{
         oppan.add(recogida);
         
         //BOTON PARA CALCULAR
-        JButton calcular= new JButton ("Calcula");
+        calcular= new JButton ("Calcula");
 		calcular.setBounds(150, 450, 100, 30);
+		
+		//Boton de reinicio
+		reiniciar= new JButton ("Reiniciar");
+		reiniciar.setBounds(10, 450, 100, 30);
 		
 		//Nota
 		mensaje= new JLabel ("El precio base del menu son 10 euros");
@@ -231,7 +238,7 @@ public class BurguerQuennApp extends JFrame{
 		
         
 		//Total
-		JTextField resultados = new JTextField();
+		resultados = new JTextField();
 		resultados.setHorizontalAlignment(JTextField.CENTER);
 		resultados.setBackground(Color.red);
 		resultados.setEditable(false);
@@ -286,17 +293,19 @@ public class BurguerQuennApp extends JFrame{
 		elementos.add(resultados);
 		elementos.add(mensaje);
 		elementos.add(mensaje2);
+		elementos.add(reiniciar);
 		
 		
 		//Evento de calcular
-		FuncionCalcula(calcular, resultados);
+		FuncionCalcula(calcular, reiniciar, resultados);
+		
 		
 	//Fin de constructor	
 	}
 
 	
 	//Funcion para calcular
-	private void FuncionCalcula(JButton calcular, JTextField resultados) {
+	private void FuncionCalcula(JButton calcular, JButton reiniciar, JTextField resultados) {
 		calcular.addActionListener(new ActionListener(){
             public void actionPerformed (ActionEvent e){
             	double precio = 10;
@@ -326,7 +335,13 @@ public class BurguerQuennApp extends JFrame{
             	double total = precio + vvketchup + vvmostaza + vvyogur + vvbbq;
             	double iva = total * 0.10;
             	double totalconiva = total + iva;
-            	resultados.setText(totalconiva + " " + "€");                   
+            	resultados.setText(totalconiva + " " + "€"); 
+            	reiniciar.addActionListener(new ActionListener(){
+        			public void actionPerformed (ActionEvent e){
+        				double totalconiva = 0;
+        				resultados.setText(totalconiva + " " + "€"); 
+        			}
+        		});	
             }
         });
 	}
