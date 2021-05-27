@@ -15,7 +15,7 @@ import javax.swing.*;
 
 
 
-public class BurguerQuennApp extends JFrame{
+public class BurguerQueenV2 extends JFrame{
 
 	//Variables y artributos
 	private JLabel menu;
@@ -63,13 +63,13 @@ public class BurguerQuennApp extends JFrame{
 	private JButton calcular;
 	private JButton reiniciar;
 	
-	//Alineaciones
+	//Paneles
 	
 	
-	public BurguerQuennApp() {
+	public BurguerQueenV2() {
 	
 		//Titulo y cosas
-		setTitle("McMoisok's burguer");
+		setTitle("McMoisok's burguer V2");
 		setSize(420,700);
 		setResizable(false);
 		setVisible(true);
@@ -87,54 +87,58 @@ public class BurguerQuennApp extends JFrame{
 		menu = new JLabel("Menu basico");
 		menu.setForeground(Color.red);
 		menu.setFont(letra2);
-		menu.setBounds(10, 10, 300, 22);
+		
 		
 		//Hamburguesa
 		hamburguesa = new JLabel("Hamburguesa");
 		hamburguesa.setForeground(Color.blue);
 		hamburguesa.setFont(letra1);
-		hamburguesa.setBounds(10, 40, 100, 22);
+	
 		
 		//tipo de pan
 		pan = new JLabel("Pan");
 		pan.setForeground(Color.blue);
 		pan.setFont(letra1);
-		pan.setBounds(150, 40, 100, 22);
+		
 		
 		//tipo de papas
 		papas = new JLabel("Patatas");
 		papas.setForeground(Color.blue);
 		papas.setFont(letra1);
-		papas.setBounds(250, 40, 100, 22);
+	
 		
 		//Bebida
 		bebida = new JLabel("Bebida");
 		bebida.setForeground(Color.blue);
 		bebida.setFont(letra1);
-		bebida.setBounds(10, 200, 100, 22);
+		
 		
 		//Extras
 		extras = new JLabel("Complementos/Adiconales");
 		extras.setForeground(Color.blue);
 		extras.setFont(letra1);
-		extras.setBounds(10, 260, 210, 22);
+		
 		
 		//Salsas
 		salsas = new JLabel("Salsas (0,50 cada 1)");
 		salsas.setForeground(Color.blue);
 		salsas.setFont(letra1);
-		salsas.setBounds(200, 280, 210, 22);
+	
 		
 		
 		//Opciones burguer
 		pollo= new JRadioButton("Pollo",true);
-        pollo.setBounds(15, 70, 109, 23);
+		pollo.setOpaque(false);
+     
         cerdo= new JRadioButton("Cerdo");
-        cerdo.setBounds(15, 100, 109, 23);
+        cerdo.setOpaque(false);
+  
         ternera= new JRadioButton("Ternera (1€)");
-        ternera.setBounds(15, 130, 109, 23);
+        ternera.setOpaque(false);
+      
         vegana= new JRadioButton("Vegana (1€)");
-        vegana.setBounds(15, 160, 109, 23);
+        vegana.setOpaque(false);
+     
         opburguer = new ButtonGroup();
         opburguer.add(pollo);
         opburguer.add(cerdo);
@@ -143,11 +147,14 @@ public class BurguerQuennApp extends JFrame{
         
         //Opciones de pan
         normal= new JRadioButton("Normal",true);
-        normal.setBounds(135, 70, 109, 23);
+        normal.setOpaque(false);
+
         integral= new JRadioButton("Integral");
-        integral.setBounds(135, 100, 109, 23);
+        integral.setOpaque(false);
+    
         centeno= new JRadioButton("Centeno");
-        centeno.setBounds(135, 130, 109, 23);
+        centeno.setOpaque(false);
+      
         oppan = new ButtonGroup();
         oppan.add(normal);
         oppan.add(integral);
@@ -155,11 +162,14 @@ public class BurguerQuennApp extends JFrame{
         
         //Opciones patatas
         fritas= new JRadioButton("Fritas",true);
-        fritas.setBounds(255, 70, 109, 23);
+        fritas.setOpaque(false);
+   
         gajo= new JRadioButton("Gajo");
-        gajo.setBounds(255, 100, 109, 23);
+        gajo.setOpaque(false);
+    
         caseras= new JRadioButton("Onduladas");
-        caseras.setBounds(255, 130, 109, 23);
+        caseras.setOpaque(false);
+     
         oppapas = new ButtonGroup();
         oppapas.add(fritas);
         oppapas.add(gajo);
@@ -167,13 +177,17 @@ public class BurguerQuennApp extends JFrame{
         
         //Opciones de bebida
         cola= new JRadioButton("Cola",true);
-        cola.setBounds(5, 230, 80, 23);
+        cola.setOpaque(false);
+    
         naranja= new JRadioButton("Naranja");
-        naranja.setBounds(100, 230, 80, 23);
+        naranja.setOpaque(false);
+  
         limon= new JRadioButton("Limon");
-        limon.setBounds(195, 230, 80, 23);
+        limon.setOpaque(false);
+
         agua= new JRadioButton("Agua");
-        agua.setBounds(285, 230, 80, 23);
+        agua.setOpaque(false);
+
         opbebidas = new ButtonGroup();
         opbebidas.add(cola);
         opbebidas.add(naranja);
@@ -182,125 +196,193 @@ public class BurguerQuennApp extends JFrame{
         
         //Salsas
         sket = new JLabel ("Ketchup");
-        sket.setBounds(200, 325, 80, 20);
+
         ketchup = new JSpinner ();
-        ketchup.setBounds(260, 325, 40, 20);
+
         
         sbb= new JLabel ("BBQ");
-        sbb.setBounds(200, 355, 40, 20);
+
         bbq = new JSpinner ();
-        bbq.setBounds(260, 355, 40, 20);
+     
         
         smos= new JLabel ("Mostaza");
-        smos.setBounds(310, 325, 80, 20);
+    
         mostaza = new JSpinner ();
-        mostaza.setBounds(370, 325, 40, 20);
+    
         
         syogur= new JLabel ("Yogur");
-        syogur.setBounds(310, 355, 80, 20);
+    
         yogur = new JSpinner ();
-        yogur.setBounds(370, 355, 40, 20);
+       
         
         //Extras
         doble = new JCheckBox("Doble burguer: 2€");
-        doble.setBounds(10, 295, 150, 20);
+        doble.setOpaque(false);
+        
+ 
         
         doblequeso = new JCheckBox("Doble queso: 0,50€");
-        doblequeso.setBounds(10, 325, 150, 20);
+        doblequeso.setOpaque(false);
+   
         
         doblepapas = new JCheckBox("Doble papas: 1€");
-        doblepapas.setBounds(10, 355, 150, 20);
+        doblepapas.setOpaque(false);
+ 
         
         //Domicilio
         domicilio= new JRadioButton("Domicilio 5€");
+        domicilio.setOpaque(false);
         domicilio.setForeground(Color.blue);
-        domicilio.setBounds(80, 400, 109, 23);
+  
         recogida= new JRadioButton("En local",true);
+        recogida.setOpaque(false);
         recogida.setForeground(Color.blue);
-        recogida.setBounds(200, 400, 109, 23);
+ 
         oppan = new ButtonGroup();
         oppan.add(domicilio);
         oppan.add(recogida);
         
         //BOTON PARA CALCULAR
         calcular= new JButton ("Calcula");
-		calcular.setBounds(150, 450, 100, 30);
+
 		
 		//Boton de reinicio
 		reiniciar= new JButton ("Reiniciar");
-		reiniciar.setBounds(10, 450, 100, 30);
+	
 		
 		//Nota
 		mensaje= new JLabel ("El precio base del menu son 10 euros");
 		mensaje.setFont(letra1);
-        mensaje.setBounds(80, 550, 500, 100);
+ 
         
         mensaje2= new JLabel ("(Sin calcular el iva (10%))");
 		mensaje2.setFont(letra1);
-        mensaje2.setBounds(80, 570, 500, 100);
+  
 		
         
 		//Total
 		resultados = new JTextField();
 		resultados.setHorizontalAlignment(JTextField.CENTER);
+		resultados.setSize(80, 60);
 		resultados.setBackground(Color.red);
 		resultados.setEditable(false);
-		resultados.setBounds(150, 500, 100, 50);
+
 		
 		
 		//Creacion de panel
 		JPanel elementos = new JPanel();
 		elementos.setBackground(Color.orange);
-		elementos.setLayout(null);
+		
+		
+		JPanel Hamburguesas = new JPanel();
+		Hamburguesas.setBackground(Color.orange);
+		Hamburguesas.setLayout(new BoxLayout(Hamburguesas, BoxLayout.Y_AXIS)); 
+		Hamburguesas.setBounds(10, 40, 100, 160);
+		Hamburguesas.setBorder(BorderFactory.createLineBorder(Color.blue,2));
+		
+		JPanel panes = new JPanel();
+		panes.setBackground(Color.orange);
+		panes.setLayout(new BoxLayout(panes, BoxLayout.Y_AXIS)); 
+		panes.setBounds(145, 40, 100, 160);
+		panes.setBorder(BorderFactory.createLineBorder(Color.blue,2));
+		
+		JPanel papitas = new JPanel();
+		papitas.setBackground(Color.orange);
+		papitas.setLayout(new BoxLayout(papitas, BoxLayout.Y_AXIS)); 
+		papitas.setBounds(280, 40, 100, 160);
+		papitas.setBorder(BorderFactory.createLineBorder(Color.blue,2));
+		
+		JPanel liquidos = new JPanel();
+		liquidos.setBackground(Color.orange);
+
+		liquidos.setBounds(10, 240, 400, 40);
+		liquidos.setBorder(BorderFactory.createLineBorder(Color.blue,2));
+		
+		JPanel complementitos = new JPanel();
+		complementitos.setBackground(Color.orange);
+		complementitos.setLayout(new BoxLayout(complementitos, BoxLayout.Y_AXIS)); 
+		complementitos.setBounds(10, 290, 180, 150);
+		complementitos.setBorder(BorderFactory.createLineBorder(Color.blue,2));
+		
+		JPanel salsitas = new JPanel();
+		salsitas.setBackground(Color.orange);
+		salsitas.setBounds(200, 290, 180, 150);
+		salsitas.setBorder(BorderFactory.createLineBorder(Color.blue,2));
+		
+		JPanel envios = new JPanel();
+		envios.setBackground(Color.orange);
+		envios.setBounds(50, 450, 300, 40);
+		envios.setBorder(BorderFactory.createLineBorder(Color.blue,2));
+		
+		JPanel finale = new JPanel();
+		finale.setBackground(Color.orange);
+		finale.setLayout(new BoxLayout(finale, BoxLayout.Y_AXIS)); 
+		finale.setBounds(10, 500, 390, 155);
+		finale.setBorder(BorderFactory.createLineBorder(Color.blue,2));
+		
 		
 		//Contenedor
 		Container contenedor = getContentPane();
 		
 		//Aniadir cosas
+		contenedor.add(finale);
+		contenedor.add(envios);
+		contenedor.add(salsitas);
+		contenedor.add(complementitos);
+		contenedor.add(liquidos);
+		contenedor.add(papitas);
+		contenedor.add(panes);
+		contenedor.add(Hamburguesas);
 		contenedor.add(elementos);
 		elementos.add(menu);
-		elementos.add(hamburguesa);
-		elementos.add(pan);
-		elementos.add(papas);
-		elementos.add(pollo);
-		elementos.add(cerdo);
-		elementos.add(ternera);
-		elementos.add(vegana);
-		elementos.add(normal);
-		elementos.add(integral);
-		elementos.add(centeno);
-		elementos.add(fritas);
-		elementos.add(gajo);
-		elementos.add(caseras);
-		elementos.add(bebida);
-		elementos.add(cola);
-		elementos.add(naranja);
-		elementos.add(limon);
-		elementos.add(agua);
-		elementos.add(extras);
-		elementos.add(doble);
-		elementos.add(doblequeso);
-		elementos.add(doblepapas);
-		elementos.add(salsas);
-		elementos.add(sket);
-		elementos.add(ketchup);
-		elementos.add(sbb);
-		elementos.add(bbq);
-		elementos.add(smos);
-		elementos.add(mostaza);
-		elementos.add(syogur);
-		elementos.add(yogur);
-		elementos.add(domicilio);
-		elementos.add(recogida);
-		elementos.add(calcular);
-		elementos.add(resultados);
-		elementos.add(mensaje);
-		elementos.add(mensaje2);
-		elementos.add(reiniciar);
+		Hamburguesas.add(hamburguesa);
+		//elementos.add(pan);
+		//elementos.add(papas);
+		Hamburguesas.add(pollo);
+		Hamburguesas.add(cerdo);
+		Hamburguesas.add(ternera);
+		Hamburguesas.add(vegana);
+		panes.add(pan);
+		panes.add(normal);
+		panes.add(integral);
+		panes.add(centeno);
+		papitas.add(papas);
+		papitas.add(fritas);
+		papitas.add(gajo);
+		papitas.add(caseras);
+		liquidos.add(bebida);
+		liquidos.add(cola);
+		liquidos.add(naranja);
+		liquidos.add(limon);
+		liquidos.add(agua);
+		complementitos.add(extras);
+		complementitos.add(doble);
+		complementitos.add(doblequeso);
+		complementitos.add(doblepapas);
+		salsitas.add(salsas);
+		salsitas.add(sket);
+		salsitas.add(ketchup);
+		salsitas.add(sbb);
+		salsitas.add(bbq);
+		salsitas.add(smos);
+		salsitas.add(mostaza);
+		salsitas.add(syogur);
+		salsitas.add(yogur);
+		envios.add(domicilio);
+		envios.add(recogida);
+		finale.add(mensaje);
+		finale.add(mensaje2);
+		finale.add(resultados);
+		finale.add(calcular);
+		
+		
+		
+		
+		
 		
 		
 		//Evento de calcular
-		FuncionCalcula(calcular, reiniciar, resultados);
+		FuncionCalcula(calcular,resultados);
 		
 		
 	//Fin de constructor	
@@ -308,7 +390,7 @@ public class BurguerQuennApp extends JFrame{
 
 	
 	//Funcion para calcular
-	private void FuncionCalcula(JButton calcular, JButton reiniciar, JTextField resultados) {
+	private void FuncionCalcula(JButton calcular, JTextField resultados) {
 		calcular.addActionListener(new ActionListener(){
             public void actionPerformed (ActionEvent e){     
             	double precio = 10;
@@ -340,12 +422,6 @@ public class BurguerQuennApp extends JFrame{
             	double iva = total * 0.10;
             	double totalconiva = total + iva;
             	resultados.setText(totalconiva + " " + "€"); 
-            	reiniciar.addActionListener(new ActionListener(){
-        			public void actionPerformed (ActionEvent e){
-        				double totalconiva = 0;
-        				resultados.setText(totalconiva + " " + "€"); 
-        			}
-        		});	
             }
         });
 	}
@@ -356,7 +432,7 @@ public class BurguerQuennApp extends JFrame{
 		 EventQueue.invokeLater(new Runnable() {
 	            public void run() {
 	                try {
-	                	BurguerQuennApp frame = new BurguerQuennApp();
+	                	BurguerQueenV2 frame = new BurguerQueenV2();
 	                    frame.setVisible(true);
 	                } catch (Exception e) {
 	                    e.printStackTrace();
