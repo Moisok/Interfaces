@@ -11,10 +11,7 @@ import javax.swing.border.Border;
 
 public class Mash_Text  extends JFrame{
 	
-	private JButton guardar;
-	private JButton abrir;
-	private JButton nuevo;
-	private JTextField mostrar;
+	private JTextArea mostrar;
 
 	public Mash_Text () {
 		setTitle("Mash_Text");
@@ -27,20 +24,12 @@ public class Mash_Text  extends JFrame{
 		Font letra1 = new Font("Arial", Font.BOLD,  20);
 				
 		//Mostrar
-		mostrar = new JTextField ("ESTO ES UNA PRUEBA");
-		mostrar.setBounds(50,20,700,400);
-		mostrar.setBackground(Color.BLACK);
-		mostrar.setForeground(Color.green);
+		mostrar = new JTextArea ("ESTO ES UNA PRUEBA");
+		mostrar.setBounds(50,55,700,500);
+
 		
 		//Botones
-		JButton guardar = new JButton("Guardar");
-		guardar.setBounds(180, 450, 120, 30);
-
-		JButton abrir = new JButton("Abrir");
-		abrir.setBounds(340, 450, 120, 30);
 		
-		JButton nuevo = new JButton("Nuevo");
-		nuevo.setBounds(500, 450, 120, 30);
 
 		
 		//JPanel
@@ -55,12 +44,6 @@ public class Mash_Text  extends JFrame{
 		//Aniadir cosas
 		contenedor.add(principal);
 		principal.add(mostrar);
-		principal.add(nuevo);
-		principal.add(abrir);
-		principal.add(guardar);
-		
-		
-		
 	}
 		
 	
