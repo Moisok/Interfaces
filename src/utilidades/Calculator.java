@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class MiniCalculadora extends JFrame {
+public class Calculator extends JFrame {
 	
 	private JPanel panel1;
 	private JTextField txtNumA;
@@ -15,7 +15,7 @@ public class MiniCalculadora extends JFrame {
 	private JButton btnDiv;
 	private JLabel lblRes;
 	
-	public  MiniCalculadora(){
+	public  Calculator(){
 		        
         initComponents();
         
@@ -169,7 +169,7 @@ public class MiniCalculadora extends JFrame {
 		 SwingUtilities.invokeLater(new Runnable() {
 		 @Override
 		 public void run() {
-		 new MiniCalculadora();
+		 new Calculator();
 		 }
 	});
 	}

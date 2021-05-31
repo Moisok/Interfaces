@@ -21,9 +21,6 @@ public class Aprobar extends JFrame {
 		setSize(300,200);
 		setResizable(false);
 		setVisible(true);
-		
-		
-		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		
@@ -133,7 +130,6 @@ public class Aprobar extends JFrame {
 	//Clase main
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
 		 EventQueue.invokeLater(new Runnable() {
 	            public void run() {
 	                try {

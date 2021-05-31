@@ -375,12 +375,6 @@ public class BurguerQueenV2 extends JFrame{
 		finale.add(resultados);
 		finale.add(calcular);
 		
-		
-		
-		
-		
-		
-		
 		//Evento de calcular
 		FuncionCalcula(calcular,resultados);
 		
