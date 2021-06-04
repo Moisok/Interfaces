@@ -35,23 +35,45 @@ public class Mash_Text  extends JFrame{
 	private JMenu files;
 	private JMenuBar menup;
 	private JTextArea mostrar;
+	private JSpinner tamanio;
+	private JComboBox<String> comboBox;
 	
 	//Botones
 	private JButton negrita;
 	private JButton cursiva;
 	private JButton subr;
 
+	//Variables
+	 private int tamanio_letra = 12;
+	
 	public Mash_Text () {
 		setTitle("Mash_Text");
 		setSize(800,1000);
 		setResizable(false);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		Toolkit predeterminado=Toolkit.getDefaultToolkit();
+		Image icono=predeterminado.getImage("ms.png");
+		setIconImage(icono);
 		
 		//Tipos de fuentes
-		Font letra1 = new Font("Arial", Font.BOLD,  12);
-		Font letra2 = new Font("Arial", Font.ITALIC,  12);
-		Font letra3 = new Font("Arial", TextAttribute.UNDERLINE_ON, 12);
+		Font letra1 = new Font("Arial", Font.BOLD,  tamanio_letra);
+		Font letra2 = new Font("Arial", Font.ITALIC,  tamanio_letra);
+		Font letra3 = new Font("Arial", TextAttribute.UNDERLINE_ON, tamanio_letra);
+		
+		//Tipos de letra
+		Font Arial = new Font ("Arial", tamanio_letra, tamanio_letra);
+		Font serif = new Font ("Liberation Serif", tamanio_letra, tamanio_letra);
+		Font Caladea = new Font ("Caladea", tamanio_letra, tamanio_letra);
+		
+        comboBox = new JComboBox<>();
+        comboBox.setSize(60,50);
+ 
+        //A�adimos opciones
+        comboBox.addItem("Arial");
+        comboBox.addItem("Liberation serif");
+        comboBox.addItem("Caladea");
+		
 				
 		//Mostrar
 		mostrar = new JTextArea (" ");
@@ -117,6 +139,12 @@ public class Mash_Text  extends JFrame{
 		barra.setFloatable(false); //impide que se pueda mover de sitio
 
 		barra.setOrientation(JToolBar.HORIZONTAL); // pone la orientación vertical
+		
+		//Tamanio de texto
+		JButton confirmar = new JButton ("Apply");
+		confirmar.setSize(60,70);
+		tamanio = new JSpinner ();
+		tamanio.setSize(60,50);
 
 		
 		//JPanel
@@ -153,9 +181,29 @@ public class Mash_Text  extends JFrame{
 		barra.add(negrita); 
 		barra.add(subr); 
 		barra.add(color);
+		barra.add(tamanio);
+		barra.add(comboBox);
+		barra.add(confirmar);
+		
 		
 		
 		//Eventos
+		//Tamanio letra
+		confirmar.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent ev) {
+	            tamanio_letra = (int)tamanio.getValue();
+	            mostrar.setFont(new Font(comboBox.getSelectedItem().toString(), Font.BOLD,  tamanio_letra));
+	            /*if () {
+	            	mostrar.setFont(new Font("Arial", Font.BOLD,  tamanio_letra));
+	            }
+	            if (comboBox.equals("serif")) {
+	            	mostrar.setFont(new Font("Liberation Serif", Font.BOLD, tamanio_letra));
+	            }*/
+	        	
+	        }
+	    });
+		
+		
 		//Salir
 		salir.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent ev) {
@@ -209,6 +257,7 @@ public class Mash_Text  extends JFrame{
 	               mostrar.setFont(font.deriveFont(attributes));
 	        }
 	    });
+		
 		//Color
 		color.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent ev) {
