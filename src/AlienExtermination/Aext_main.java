@@ -8,13 +8,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyListener;
+import java.awt.Robot; 
 
 import javax.swing.*;
 
 
 
 public class Aext_main extends JFrame {
-
+	
 	public Aext_main () {
 		//Opciones de la ventana
 		setTitle("Alien Extermination");
@@ -47,30 +48,16 @@ public class Aext_main extends JFrame {
 		nivel1.add(nave);
 		nivel1.add(background);
 		
-		//Eventos de movimiento de la nave
+		
+		//Escuchar teclado
+				KeyListener Escuchar = new EscucharTeclado(nave);
+				addKeyListener(Escuchar);
+				setFocusable(true);
+				
 		
 	}
-	
-	//Clase para el movimiento de la nave
-	/*public class VigilaTeclado extends KeyAdapter
-	{
-	public void keyPressed (KeyEvent evt)
-	{
-	switch (evt.getKeyCode())
-	{
-	case KeyEvent.VK_RIGHT: System.out.println("derecha"); break;
-	case KeyEvent.VK_LEFT: System.out.println("izquierda"); break;
-	case KeyEvent.VK_UP: System.out.println("Arriba"); break;
-	case KeyEvent.VK_DOWN: System.out.println("Abajo"); break;
-	case KeyEvent.VK_SPACE: System.out.println("disparo"); break;
-	}
-	}
-	}*/
-	
-	
-	
-	
-	
+
+
 //Clase principal de 
 public static void main(String[] args) {
 	// TODO Auto-generated method stub
