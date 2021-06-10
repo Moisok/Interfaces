@@ -34,6 +34,11 @@ public class Aext_main extends JFrame {
 		starship nave = new starship();
 		nave.setLocation(400, 500);
 		
+		//Disparo
+		Shoot disparo = new Shoot();
+		disparo.setLocation(420, 480);
+		disparo.setVisible(false);
+		
 		
 		//Creacion de panel
 		JPanel nivel1 = new JPanel();
@@ -45,12 +50,13 @@ public class Aext_main extends JFrame {
 		contenedor.add(nivel1);
 		
 		//Añadimos elementos a los niveles
+		nivel1.add(disparo);
 		nivel1.add(nave);
 		nivel1.add(background);
 		
 		
 		//Escuchar teclado
-				KeyListener Escuchar = new EscucharTeclado(nave);
+				KeyListener Escuchar = new EscucharTeclado(nave, disparo);
 				addKeyListener(Escuchar);
 				setFocusable(true);
 				
