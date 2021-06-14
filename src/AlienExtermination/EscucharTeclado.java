@@ -17,16 +17,17 @@ import javax.swing.Timer;
 		private int posicion = 400;
 		private int posiciondisparo = 420;
 		private int disparoV = 480;
-		private int movimiento = 20;
+		private int movimiento = 10;
+		private int balas;
 		
-		//Timer para el disparo
+		//Timer para el disparo, esto hace que la bala vaya subiendo hacia arriba
 		Timer timer = new Timer(30, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
             	disparo.setVisible(true);
 				disparo.setLocation(posiciondisparo, disparoV);
 				disparoV = disparoV - movimiento;
-				if (disparoV == 15) {
+				if (disparoV == 0) {
 					disparo.setVisible(false);
 					disparoV = 480;
 					disparo.setLocation(posiciondisparo, disparoV);
@@ -35,11 +36,16 @@ import javax.swing.Timer;
             }
         });
 		
-		public EscucharTeclado (starship nave, Shoot disparo) {
+		public EscucharTeclado (starship nave, Shoot disparo, int balas) {
 			this.nave = nave;
 			this.disparo = disparo;
+			this.balas = balas;
 		}
 	
+
+		//Esto caputra las teclas de la clase principal ademas limita que la nave no pueda moverse mas haya de los bordes (izquierda y derecha)
+		//Se han asignado 3 teclas la tecla derecha, la tecla izquierda y el espacio que es para disparar, cuando disparamos con el espacio
+		//iniciamos el timer para que la bala salga disparada hacia arriba
 		@Override
 		public void keyTyped(KeyEvent e) {
 		}
@@ -52,7 +58,7 @@ import javax.swing.Timer;
 				posicion = posicion + movimiento;
 				posiciondisparo = posiciondisparo + movimiento;
 				nave.setLocation(posicion, 500);
-				disparo.setLocation(posiciondisparo, 480);
+				disparo.setLocation(posiciondisparo, disparoV);
 				if (posicion >= 700) {
 					posicion = 700;
 					nave.setLocation(680, 500); 
@@ -64,7 +70,7 @@ import javax.swing.Timer;
 				posicion = posicion - movimiento;
 				posiciondisparo = posiciondisparo - movimiento;
 				nave.setLocation(posicion, 500);
-				disparo.setLocation(posiciondisparo, 480);
+				disparo.setLocation(posiciondisparo, disparoV);
 				if (posicion < 100) {
 					posicion = 80;
 					nave.setLocation(80, 500); 
@@ -73,6 +79,7 @@ import javax.swing.Timer;
 				break;
 			
 			case KeyEvent.VK_SPACE:
+				balas = balas -1;
 				timer.start();
 				break;
 			}
@@ -81,6 +88,9 @@ import javax.swing.Timer;
 		public void keyReleased(KeyEvent e) {
 			
 	}
+
+		public int getBalas() {
+			return balas;
+		}
 		
 }
-	

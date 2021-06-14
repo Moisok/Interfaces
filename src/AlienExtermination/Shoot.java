@@ -2,6 +2,8 @@ package AlienExtermination;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Rectangle;
+
 import javax.swing.*;
 //...
  
@@ -18,4 +20,6 @@ public class Shoot extends JPanel {
 		setOpaque(false);
 		super.paintComponent(G);
 	}
+
+
 }
