@@ -2,9 +2,17 @@ package AlienExtermination;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.TimerTask;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.Timer;
 
 //Clase para el movimiento de la nave 
@@ -19,6 +27,7 @@ import javax.swing.Timer;
 		private int disparoV = 480;
 		private int movimiento = 10;
 		private int balas;
+		private musica_y_sonidos laser_gun = new musica_y_sonidos();
 		
 		//Timer para el disparo, esto hace que la bala vaya subiendo hacia arriba
 		Timer timer = new Timer(30, new ActionListener(){
@@ -79,16 +88,18 @@ import javax.swing.Timer;
 				break;
 			
 			case KeyEvent.VK_SPACE:
+				laser_gun.musica_y_sonidos("alien_9.wav");
 				balas = balas -1;
 				timer.start();
 				break;
 			}
 		}
+		
 		@Override
 		public void keyReleased(KeyEvent e) {
 			
 	}
-
+		//Getter para devolver balas
 		public int getBalas() {
 			return balas;
 		}

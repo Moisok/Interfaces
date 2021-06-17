@@ -22,11 +22,11 @@ public class Aext_main extends JFrame  {
 	private int horizontal4;
 	private int horizontal5;
 	private int horizontal6;
-	private int balas = 24;
+	private int balas = 14;
 	private int puntuacion = 0;
 	private String infobalas = "Balas:" + balas; 
 	private String infopuntos = "Puntos: " + puntuacion;
-	
+	private musica_y_sonidos musica_fondo = new musica_y_sonidos();
 
 	
 	public Aext_main () {
@@ -39,6 +39,7 @@ public class Aext_main extends JFrame  {
 		Toolkit predeterminado=Toolkit.getDefaultToolkit();
 		Image icono= predeterminado.getImage("icon.png");
 		setIconImage(icono);
+		musica_fondo.musica_y_sonidos("alien_music.wav");
 		
 		//Fondo
 		PanelImagen background = new PanelImagen();
@@ -110,6 +111,8 @@ public class Aext_main extends JFrame  {
 				KeyListener Escuchar = new EscucharTeclado (nave, disparo, balas);
 				addKeyListener(Escuchar);
 				setFocusable(true);
+		//Musica de fondo
+			
 				
 		//Movimientos de la nave alienigena, se van teletransportando de manera random en la misma fila donde estan situadas
 			Timer timerovni = new Timer(1500, new ActionListener(){
@@ -193,10 +196,6 @@ public class Aext_main extends JFrame  {
 			        }
 			    );
 			colisiones.start();
-			
-			
-			
-			
 	}
 	
 	
